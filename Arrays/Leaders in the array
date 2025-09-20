@@ -2,7 +2,7 @@ class Solution {
   public:
     vector<int> leaders(vector<int>& arr) {
 
-// FIRST SOLUTION
+// FIRST SOLUTION : Optimal
  // TC = O(2N) , SC=O(N)   
 
       int n = arr.size();
@@ -18,7 +18,7 @@ class Solution {
         return ans;
 
 
-// SCOND CASE:-
+// SECOND CASE : Brute force
 //TC = O(n^2), SC = O(N)worst case
 
         int n = arr.size();
