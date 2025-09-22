@@ -1,0 +1,38 @@
+class Solution {
+  public:
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
+        // code here
+        vector<int> c;
+        int i=0;
+        int j=0;
+        int n1 = a.size();
+        int n2 = b.size();
+        while(i<n1 && j<n2){
+            if(a[i]<=b[j]){
+               if(c.size()==0 || c.back()!=a[i]){
+                   c.push_back(a[i]);
+               }
+               i++;
+            }else{
+               if(c.size()==0 || c.back()!=b[j]){
+                   c.push_back(b[j]);
+               }
+               j++;
+            }
+        }
+        while(j<n2){
+             if(c.size()==0 || c.back()!=b[j]){
+                   c.push_back(b[j]);
+               }
+               j++;
+        }
+        
+        while(i<n1){
+             if(c.size()==0 || c.back()!=a[i]){
+                   c.push_back(a[i]);
+               }
+               i++;
+        }
+        return c;
+    }
+};
