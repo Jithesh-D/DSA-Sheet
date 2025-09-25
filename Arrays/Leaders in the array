@@ -1,6 +1,6 @@
 class Solution {
   public:
-    vector<int> leaders(vector<int>& arr) 
+    vector<int> leaders(vector<int>& arr) {
 
 // FIRST SOLUTION : Optimal
  // TC = O(2N) , SC=O(N)   
