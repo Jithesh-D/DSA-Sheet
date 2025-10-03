@@ -1,0 +1,22 @@
+vector <int> generateRows(int rows){
+    long long ans=1;
+     vector <int> ansRow;
+    ansRow.push_back(ans);
+    for(int column=1;column<rows;column++){
+       ans = ans *(rows-column);
+       ans = ans/ column;
+       ansRow.push_back(ans);
+    }
+    return ansRow;
+}
+
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>> ans;
+      for(int i=1;i<=numRows;i++){
+        ans.push_back(generateRows(i));
+      }
+    return ans; 
+    }
+};
