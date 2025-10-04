@@ -1,5 +1,7 @@
 # Leetcode-DSA-Sheet-solution
 
+[Strivers DSA Sheet](https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/)
+
 # 🚀 DSA Daily in C++
 
 This repository is my personal journey of solving **one Data Structures & Algorithms (DSA) problem every day** in **C++**.  
