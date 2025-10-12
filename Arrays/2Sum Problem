@@ -13,3 +13,21 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
     }
     *returnSize=2;
     return result;
+
+//optimal 
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        //optimal Approach
+       map <int,int> mpp;
+       int n = nums.size();
+       for(int i=0;i<n;i++){
+         int requiredVal = target - nums[i];
+         if(mpp.find(requiredVal) != mpp.end()){
+            return {mpp[requiredVal],i};
+         } 
+         mpp[nums[i]]=i;
+       } 
+     return {-1,-1};
+    }
+};
