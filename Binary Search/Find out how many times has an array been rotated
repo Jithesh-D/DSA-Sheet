@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int findKRotation(vector<int> &nums)  {
+        int n = nums.size();
+        int low=0;
+        int high = n-1;
+        int ans =INT_MAX;
+        int minvalue =INT_MAX;
+        while(low<=high){
+         int mid = (low+high)/2;
+        if(nums[low]<=nums[high]){
+            minvalue = nums[low];
+            ans =low;
+            break;
+        }      
+        if(nums[low]<=nums[mid]){
+            minvalue = min(minvalue,low);
+            ans = low;
+            low=mid+1;
+            
+        }else{
+           
+            minvalue = min(minvalue,mid);
+            ans = mid;
+            high = mid-1;
+            
+        }
+        }
+        return ans;
+    }
+};
