@@ -1,0 +1,68 @@
+class Solution {
+public:
+int minofarr(vector<int> arr,int size){
+        int miniVal = arr[0];
+        for(int i=1;i<size;i++){
+         if(arr[i]<miniVal){
+            miniVal = arr[i];
+         }
+        }
+        return miniVal;
+    }
+int maxofarr(vector<int> arr,int size){
+        int maxVal = arr[0];
+        for(int i=1;i<size;i++){
+         if(arr[i]>maxVal){
+            maxVal = arr[i];
+         }
+        }
+        return maxVal;
+    }
+
+bool possible(vector<int> bloomDay,int n,int day,int k,int m){
+    int count =0;
+    int nofbouq=0;
+    for(int i=0;i<n;i++){
+        if(bloomDay[i]<= day){
+          count++;
+        }else{
+         nofbouq += (count/k);
+         count=0;
+        }
+    }
+    nofbouq += (count/k);
+    if(nofbouq >=m){
+        return true;
+    }
+    return false;
+ }  
+ int minDays(vector<int>& bloomDay, int m, int k) {
+    int n = bloomDay.size();
+    int low = minofarr(bloomDay,n);
+    int high = maxofarr(bloomDay,n);
+    int ans =-1;
+    while(low<=high){
+        int mid = (low+high)/2;
+        
+        if(possible(bloomDay,n,mid,k,m)){
+           ans = mid;
+           high = mid-1;
+        }else{
+            low= mid+1;
+        }
+    }
+    return ans;
+ }
+};
+    // int minDays(vector<int>& bloomDay, int m, int k) {
+    //     int n = bloomDay.size();
+    //     int mini = minofarr(bloomDay,n);
+    //     int maxi = maxofarr(bloomDay,n);
+    //     for(int i=mini ;i<=maxi;i++){
+    //         if(possible(bloomDay,n,i,k,m)){
+    //             return i;
+    //         }
+    //     }
+    //     return -1;
+//     // }
+// };
