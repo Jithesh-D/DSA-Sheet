@@ -1,0 +1,50 @@
+class Solution {
+public:
+int maxofarr(vector<int> arr,int size){
+        int maxVal = arr[0];
+        for(int i=1;i<size;i++){
+         if(arr[i]>maxVal){
+            maxVal = arr[i];
+         }
+        }
+        return maxVal;
+    }
+    // int smallestDivisor(vector<int>& nums, int threshold) {
+    //     int n = nums.size();
+    //     int maxi = maxofarr(nums,n);
+    //     int ans=0;
+    //     for(int i=1;i<=maxi;i++){
+    //         long long  sum=0;
+    //         for(int j=0;j<n;j++){
+    //            sum += ceil((double)nums[j]/i);
+    //         }
+    //         if(sum<=threshold){
+    //             ans = i;
+    //             break;
+    //         }
+    //     }
+    //     return ans;
+    // }
+};
+
+    int smallestDivisor(vector<int>& nums, int threshold) {
+        int low =1;
+        int n = nums.size();
+        int high = maxofarr(nums,n);
+        int ans = 0;
+        while(low<=high){
+            int mid = (low+high)/2;
+            long long sum =0;
+            for(int i=0;i<n;i++){
+                sum += ceil((double)nums[i]/mid);
+            }
+            if(sum <= threshold){
+              ans = mid;
+              high = mid-1;
+            }else{
+                low = mid+1;
+            }
+        }
+        return ans;
+    }
+// };
