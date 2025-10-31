@@ -1,0 +1,40 @@
+class Solution {
+public:
+int maxofarr(vector<int> arr,int size){
+        int maxVal = arr[0];
+        for(int i=1;i<size;i++){
+         if(arr[i]>maxVal){
+            maxVal = arr[i];
+         }
+        }
+        return maxVal;
+    }
+    int day(vector<int> weights,int capacity){
+        int n = weights.size();
+        int sum =0; int days =1;
+        for(int i=0;i<n;i++){
+          if(sum + weights[i]>capacity){
+            days++;
+            sum = weights[i];
+          }else{
+            sum += weights[i];
+          }
+        }
+        return days;
+    }
+    int shipWithinDays(vector<int>& weights, int days) {
+        int n = weights.size();
+        int low = maxofarr(weights,n);
+        int high = accumulate(weights.begin(),weights.end(),0);
+        while(low<=high){
+            int mid = (low+high)/2;
+            int nofdays = day(weights,mid);
+            if(nofdays <= days){
+                high = mid-1;
+            }else{
+                low = mid+1;
+            }
+        }
+        return low;
+    }
+};
