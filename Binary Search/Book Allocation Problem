@@ -1,0 +1,43 @@
+class Solution {
+public:
+    int studentcount(vector<int> nums,int value){
+        int n = nums.size();
+        int student =1; int pagesrequired=0;
+       for(int i=0;i<n;i++){
+        if(pagesrequired + nums[i] > value){
+            student ++;
+            pagesrequired = nums[i];
+        }else{
+            pagesrequired += nums[i];
+        }
+        }
+        return student;
+    } 
+
+int findPages(vector<int> &nums, int m)  {
+  int low = *max_element(nums.begin(),nums.end());
+  int high = accumulate(nums.begin(),nums.end(),0);
+  while(low <=high){
+    int mid = (low+high)/2;
+    int studentcounts = studentcount(nums,mid);
+    if(studentcounts>m){
+        low = mid+1;
+    }else{
+        high =mid-1;
+    }
+  }
+  return low;
+}
+    // int findPages(vector<int> &nums, int m)  {
+    //     int low = *max_element(nums.begin(),nums.end());
+    //     int high = accumulate(nums.begin(),nums.end(),0);
+    //     int ans =0;
+    //     for(int i=low ;i<high ;i++){
+    //         int studentcounts= studentcount(nums,i);
+    //         if(studentcounts == m){
+    //           ans = i; 
+    //         }
+    //     }
+    //     return ans;
+    // }
+};
