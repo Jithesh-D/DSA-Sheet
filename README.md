@@ -10,9 +10,7 @@ The goal: build consistency, sharpen problem-solving skills, and prepare for cod
 ---
 
 ## 📌 About this Repo
-- 🗓️ **Daily uploads** – Each day has one problem solution.  
-- 📝 **File naming convention**: `DayXX_<ProblemName>.cpp`  
-  - Example: `Day01_TwoSum.cpp`  
+- 🗓️ **Daily uploads** – Each day has one problem solution.   
 - 🎯 **Each file includes**:
   - Problem statement (commented at the top)  
   - Constraints  
