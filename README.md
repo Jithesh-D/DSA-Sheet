@@ -4,7 +4,7 @@
 
 # 🚀 DSA Daily in C++
 
-This repository is my personal journey of solving **one Data Structures & Algorithms (DSA) problem every day** in **C++**.  
+This repository is my personal journey of solving **one Data Structures & Algorithms (DSA) problem every day** in **C++*
 The goal: build consistency, sharpen problem-solving skills, and prepare for coding interviews.  
 
 ---
