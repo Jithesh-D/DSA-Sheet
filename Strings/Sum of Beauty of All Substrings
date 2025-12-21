@@ -7,6 +7,7 @@ public:
             map<int,int>mpp;
             for(int j=i;j<n;j++){
                 mpp[s[j]]++;
+                if(mpp.size() >= 2){
               int maxVal = INT_MIN;
               int minVal = INT_MAX;
 
@@ -15,6 +16,7 @@ public:
                 minVal = min(minVal, p.second);
                 }
                 result += (maxVal-minVal);
+            }
             }
         }
         return result;
