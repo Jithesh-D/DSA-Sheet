@@ -1,0 +1,27 @@
+/*
+class ListNode {
+public:
+    int data;
+    ListNode* prev;
+    ListNode* next;
+
+    ListNode(int val) : data(val), prev(nullptr), next(nullptr) {}
+};
+*/
+
+class Solution {
+public:
+    ListNode* reverseDLL(ListNode* head) {
+        ListNode* low = head;
+        ListNode* high = head;
+        while(high->next != nullptr){
+            high= high->next;
+        }
+        while(low!=high && low->prev !=high){
+            swap(low->data,high->data);
+            low = low->next;
+            high = high->prev;
+        }
+        return head;
+    }
+};
