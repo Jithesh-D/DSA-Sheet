@@ -1,1 +1,103 @@
+/*
+Definition of singly linked list:
+class ListNode{
+  public:
+    int data;
+    ListNode *next;
+    ListNode() : data(0), next(nullptr) {}
+    ListNode(int x) : data(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : data(x), next(next) {}
+};
+*/
 
+class Solution {
+    public:
+
+ListNode* sortList(ListNode* &head) {
+
+           int cnt0=0,cnt1=0,cnt2=0;
+           ListNode* temp = head;
+   
+           while(temp!=NULL){
+            if (temp->data==0){
+                cnt0++;
+            }
+             temp=temp->next;
+             
+           }
+            temp = head;
+           while(temp!=NULL){
+            if (temp->data==1){
+              cnt1++;
+            
+            }
+             temp=temp->next;
+             
+           }
+            temp = head;
+           while(temp!=NULL){
+            if (temp->data==2){
+                cnt2++;
+            }
+             temp=temp->next;
+             
+           }
+            temp = head;
+           while(temp!=NULL){
+                if (cnt0 > 0) {
+                temp->data = 0;
+                cnt0--;
+            }
+            else if (cnt1 > 0) {
+                temp->data = 1;
+                cnt1--;
+            }
+            else {
+                temp->data = 2;
+                cnt2--;
+            }
+            temp = temp->next;
+        }
+           return head;
+
+        }
+
+
+        // ListNode* sortList(ListNode* &head) {
+        //    vector<int>Aray;
+        //    ListNode* temp = head;
+        //    int i=0;
+        //    while(temp!=NULL){
+        //     if (temp->data==0){
+        //         Aray.push_back(temp->data);
+            
+        //     }
+        //      temp=temp->next;
+             
+        //    }
+        //     temp = head;
+        //    while(temp!=NULL){
+        //     if (temp->data==1){
+        //         Aray.push_back(temp->data);
+            
+        //     }
+        //      temp=temp->next;
+             
+        //    }
+        //     temp = head;
+        //    while(temp!=NULL){
+        //     if (temp->data==2){Aray.push_back(temp->data);
+        //     }
+        //      temp=temp->next;
+             
+        //    }
+        //     temp = head;
+        //    while(temp!=NULL){
+        //       temp->data = Aray[i];
+        //       i++;
+        //       temp=temp->next;
+        //    }
+        //    return head;
+
+        // }
+};
