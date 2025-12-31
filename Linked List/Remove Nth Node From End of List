@@ -11,35 +11,54 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        if (head == NULL) return NULL;
+        // if (head == NULL) return NULL;
 
-        ListNode* temp = head;
+        // ListNode* temp = head;
         
-        int cnt=0;
-        while(temp!=NULL){
-            cnt++;
-            temp = temp->next;
-        }
+        // int cnt=0;
+        // while(temp!=NULL){
+        //     cnt++;
+        //     temp = temp->next;
+        // }
 
-        if(n>cnt){
-            return head;
-        }
+        // if(n>cnt){
+        //     return head;
+        // }
 
-        if (n == cnt) {
-            ListNode* newHead = head->next;
-            delete head;
-            return newHead;
-        }
+        // if (n == cnt) {
+        //     ListNode* newHead = head->next;
+        //     delete head;
+        //     return newHead;
+        // }
       
-        int deleNode= (cnt - n)-1;
-        temp =head;
-        while(deleNode >0){
-           temp= temp->next;
-           deleNode--;
-        }
-        if (temp->next != NULL) temp ->next = temp->next->next;
+        // int deleNode= (cnt - n)-1;
+        // temp =head;
+        // while(deleNode >0){
+        //    temp= temp->next;
+        //    deleNode--;
+        // }
+        // if (temp->next != NULL) temp ->next = temp->next->next;
 
-        return head;
+        // return head;
+
+
+         ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+
+        ListNode* fast = dummy;
+        ListNode* slow = dummy;
+
+        for (int i = 0; i <= n; i++) {
+            fast = fast->next;
+        }
+
+        while (fast != NULL) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        slow->next = slow->next->next;
+
+        return dummy->next;
         
     }
 };
