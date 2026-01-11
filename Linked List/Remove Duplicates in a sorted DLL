@@ -1,4 +1,3 @@
-
 /*
 Definition of doubly linked list:
 struct ListNode
@@ -43,6 +42,10 @@ public:
         }else{
             duplicate = temp;
             temp = temp->next;
+            newnode->next = temp;
+            if (temp != NULL)
+                temp->prev = newnode;
+
             delete duplicate;
         }
        }
