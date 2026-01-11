@@ -1,1 +1,52 @@
 
+/*
+Definition of doubly linked list:
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode *prev;
+    ListNode()
+    {
+        val = 0;
+        next = NULL;
+        prev = NULL;
+    }
+    ListNode(int data1)
+    {
+        val = data1;
+        next = NULL;
+        prev = NULL;
+    }
+    ListNode(int data1, ListNode *next1, ListNode *prev1)
+    {
+        val = data1;
+        next = next1;
+        prev = prev1;
+    }
+};
+*/
+
+class Solution {
+public:
+    ListNode * removeDuplicates(ListNode *head) {
+    if (head == NULL) return head;
+       ListNode* newnode = head;
+       ListNode* temp = newnode->next;
+       ListNode* duplicate;
+       while(temp!=NULL){
+        if(temp->data != newnode->data){
+            temp->prev = newnode;
+            newnode->next = temp;
+            newnode = newnode->next;
+            temp = temp->next;
+        }else{
+            duplicate = temp;
+            temp = temp->next;
+            delete duplicate;
+        }
+       }
+       newnode->next = NULL;
+       return head;
+    }
+};
