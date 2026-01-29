@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int heightSize = height.size();
+        int left[heightSize];
+    int right[heightSize];
+     left[0]=height[0];
+    for(int i=1;i<heightSize;i++){
+        left[i]=max(left[i-1],height[i]);
+    }
+     right[heightSize-1]=height[heightSize-1];
+    for(int i=heightSize-2;i>=0;i--){
+        right[i]= max(right[i+1],height[i]);
+    }
+    int ans=0;
+    for(int i=0;i<heightSize;i++){
+         ans += min(right[i],left[i])-height[i];
+    }
+    return ans;
+    }
+};
