@@ -1,0 +1,47 @@
+class Solution {
+  public:
+    int longestKSubstr(string &s, int k) {
+  //Optimal : TC -O(N*N) , SC - O(256)  
+
+        int maxlen=-1,  n =s.size();
+        for(int i=0;i<n;i++){
+            map<char,int>mpp;
+            for(int j=i;j<n;j++){
+                mpp[s[j]]++;
+                if(mpp.size()<=k){
+                     maxlen = max(j-i+1, maxlen);
+                }
+                  if(mpp.size() > k){
+                    break;
+                }
+            }
+        }
+        return maxlen;
+        
+        
+  //Optimal : TC -O(N) , SC - O(256)  
+        
+    //   int maxlen=-1, l=0,r=0,  n =s.size();
+    //   map<char,int>mpp;
+    //   while(r<n){
+    //       mpp[s[r]]++;
+
+    //          if(mpp.size()>k){
+    //               mpp[s[l]]--;
+    //               if(mpp[s[l]]==0){
+    //                   mpp.erase(s[l]);
+    //               }
+    //               l++;
+    //           }
+               
+    //       if(mpp.size()<=k){
+    //           maxlen = max(r-l+1, maxlen);
+    //       }
+          
+             
+    
+    //       r++;
+    //   }
+    //     return maxlen;
+    }
+};
