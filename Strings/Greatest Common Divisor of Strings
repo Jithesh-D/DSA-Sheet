@@ -1,0 +1,39 @@
+class Solution {
+public:
+
+    bool check(string a, string base){
+        int n = a.size();
+        int m = base.size();
+        
+        int i=0, j=0;
+        
+        while(i<n){
+            if(a[i] != base[j]) return false;
+            
+            i++;
+            j++;
+            
+            if(j==m) j=0;
+        }
+        return true;
+    }
+
+    string gcdOfStrings(string str1, string str2) {
+        
+        string small = (str1.size() < str2.size()) ? str1 : str2;
+        int len = small.size();
+        
+        for(int l = len; l>=1; l--){
+        
+            if(str1.size()%l!=0 || str2.size()%l!=0)
+                continue;
+            
+            string base = small.substr(0,l);
+            
+            if(check(str1,base) && check(str2,base))
+                return base;
+        }
+        
+        return "";
+    }
+};
