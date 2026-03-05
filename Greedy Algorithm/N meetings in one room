@@ -19,3 +19,33 @@ class Solution {
         return cnt;
     }
 };
+
+
+//IF RETURN A ORDER HOW IT IS STORED
+class Solution {
+public:
+    vector<int> maxMeetings(int n, vector<int>& start, vector<int>& end) {
+        
+        vector<pair<int,pair<int,int>>> meetings;
+        
+        for(int i=0;i<n;i++){
+            meetings.push_back({end[i], {start[i], i+1}});
+        }
+        
+        sort(meetings.begin(), meetings.end());
+        
+        vector<int> ans;
+        int freetime = meetings[0].first;
+        
+        ans.push_back(meetings[0].second.second);
+        
+        for(int i=1;i<n;i++){
+            if(meetings[i].second.first > freetime){
+                ans.push_back(meetings[i].second.second);
+                freetime = meetings[i].first;
+            }
+        }
+        
+        return ans;
+    }
+};
