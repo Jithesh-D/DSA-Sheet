@@ -1,1 +1,77 @@
+/**
+ * Definition of TreeNode:
+ * class TreeNode {
+ * public:
+ *     int val;
+ *     TreeNode *left, *right;
+ *     TreeNode(int val) {
+ *         this->val = val;
+ *         this->left = this->right = NULL;
+ *     }
+ * }
+ */
 
+class Solution {
+public:
+    /**
+     * @param root: a TreeNode
+     * @return: a list of integer
+     */
+     bool isLeafNode(TreeNode* root){
+         return (root->left == NULL && root->right == NULL);
+     }
+     void leftTraversal(TreeNode* root,vector<int>& res){
+         TreeNode* curr = root->left;
+         while(curr!=NULL){
+             if(!isLeafNode(curr)) res.push_back(curr->val);
+
+             if(curr->left){
+               curr = curr->left;
+             }else{
+                 curr = curr ->right;
+             }
+              
+         }
+     }
+       
+   void addLeafNodes(TreeNode* root,vector<int>& res){
+       if(!root) return;
+       if(isLeafNode(root)) {
+           res.push_back(root->val);
+           return;
+       }
+       addLeafNodes(root->left,res);
+       addLeafNodes(root->right,res);
+   }    
+
+   void rightTraversal(TreeNode* root,vector<int>& res){
+         TreeNode* curr = root->right;
+         vector<int>temp;
+         while(curr !=NULL){
+                if(!isLeafNode(curr)) temp.push_back(curr->val);
+
+             if(curr->right){
+               curr = curr->right;
+             }else{
+                 curr = curr ->left;
+             }
+         }
+         for(int i=temp.size()-1;i>=0;i++){
+            res.push_back(temp[i]);
+         }
+        
+     }
+
+
+    vector<int> boundaryOfBinaryTree(TreeNode *root) {
+        vector<int>res;
+        if(!root) return res;
+        if(!isLeafNode(root))
+        res.push_back(root->val);
+        leftTraversal(root,res);
+        addLeafNodes(root,res);
+        rightTraversal(root,res);
+
+        return res; 
+    }
+};
