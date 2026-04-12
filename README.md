@@ -15,7 +15,7 @@ The goal: build consistency, sharpen problem-solving skills, and prepare for cod
   - Constraints  
   - Approach / Explanation  
   - Time & Space Complexity analysis  
-  - C++ solution (copyable and runnable)  
+  - C++ solution (copyable and runnable)
 
 ---
 
