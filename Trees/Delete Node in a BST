@@ -1,0 +1,62 @@
+class Solution {
+public:
+    TreeNode* findright(TreeNode* root){
+        while(root->right){
+            root = root->right;
+        }
+        return root;
+    }
+
+    void helper(TreeNode* &node){
+    
+        if(node->left == NULL){
+            node = node->right;
+            return;
+        }
+    
+        if(node->right == NULL){
+            node = node->left;
+            return;
+        }
+
+      
+        TreeNode* leftSub = node->left;
+        TreeNode* rightSub = node->right;
+
+        TreeNode* rightMost = findright(leftSub);
+        rightMost->right = rightSub;
+
+        node = leftSub;
+    }
+
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if(!root) return NULL;
+
+     
+        if(root->val == key){
+            helper(root);  
+            return root;
+        }
+
+        TreeNode* curr = root;
+
+        while(curr){
+            if(key < curr->val){
+                if(curr->left && curr->left->val == key){
+                    helper(curr->left);   
+                    break;
+                }
+                curr = curr->left;
+            }
+            else{
+                if(curr->right && curr->right->val == key){
+                    helper(curr->right);  
+                    break;
+                }
+                curr = curr->right;
+            }
+        }
+
+        return root;
+    }
+};
