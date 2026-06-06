@@ -1,0 +1,33 @@
+
+class Solution {
+  public:
+  
+    // int Inorder(Node* root,int k){
+    //     if(root == NULL)
+    //       return -1;
+           
+    //      int left=-1;
+    //     left = Inorder(root->left,k);
+    //      if(left !=-1){
+    //         return left;
+    //     }
+    //     if(root->data > k){
+    //         return root->data;
+    //     }
+       
+    //      return Inorder(root->right,k);
+    // }
+    
+    int inOrderSuccessor(Node *root, Node *k) {
+         int ans=-1;
+         while(root != NULL){
+             if(root->data > k->data){
+                 ans = root->data;
+                 root = root->left;
+             }else{
+                 root = root->right;
+             }
+         }
+         return ans;
+    }
+};
